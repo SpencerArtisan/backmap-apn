@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    firebase (0.2.4)
+      httpclient
+      json
+    grocer (0.6.1)
+    httpclient (2.7.0.1)
+    json (1.8.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  firebase
+  grocer
