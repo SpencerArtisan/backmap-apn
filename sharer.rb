@@ -3,9 +3,8 @@ require 'ostruct'
 require 'grocer'
 
 pusher = Grocer.pusher(
-  certificate: 'ck.pem', passphrase: '3menin@boat', gateway: 'gateway.sandbox.push.apple.com'
+  certificate: 'ckProd.pem', passphrase: '3menin@boat', gateway: 'gateway.push.apple.com'
 )
-
 
 def users
   base_uri = 'https://illbeback.firebaseio.com/'
@@ -17,7 +16,10 @@ def users
 end
 
 users.each do |user|
-  puts user
-  notification = Grocer::Notification.new(device_token: user.iphone, badge: user.shares)
-  pusher.push notification
+  if user.iphone != "ff"
+    puts user
+    notification = Grocer::Notification.new(device_token: user.iphone, badge: user.shares)
+    puts notification.inspect
+    pusher.push notification
+  end
 end
