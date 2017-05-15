@@ -1,7 +1,7 @@
 require 'grocer'
 
 pusher = Grocer.pusher(
-  certificate: 'certificate.pem', passphrase: 'T1ypDfyp!', gateway: 'gateway.push.apple.com'
+  certificate: 'artisan-final.pem', passphrase: 'T1ypDfyp!', gateway: 'gateway.push.apple.com'
 )
 
 notification = Grocer::Notification.new(
