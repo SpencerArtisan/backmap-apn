@@ -1,10 +1,11 @@
 require 'firebase'
 require 'ostruct'
-require 'grocer'
+require 'houston'
 
-pusher = Grocer.pusher(
-  certificate: 'artisan-final.pem', passphrase: 'T1ypDfyp!', gateway: 'gateway.push.apple.com'
-)
+certificate = File.read('production_Artisan.I-ll-Be-Back.pem')
+passphrase = 'T1ypDfyp!'
+connection = Houston::Connection.new(Houston::APPLE_DEVELOPMENT_GATEWAY_URI, certificate, passphrase)
+connection.open
 
 def users
   base_uri = 'https://illbeback.firebaseio.com/'
@@ -17,9 +18,12 @@ end
 
 users.each do |user|
   if user.device != "ff"
-    puts user
-    notification = Grocer::Notification.new(device_token: user.device, badge: user.shares)
+    notification = Houston::Notification.new(device: user.device)
+    notification.badge = user.shares
     puts notification.inspect
-    pusher.push notification
+
+    connection.write(notification.message)
   end
 end
+
+connection.close
