@@ -1,11 +1,11 @@
 require 'grocer'
 
 pusher = Grocer.pusher(
-  certificate: 'ckProd.pem', passphrase: '3menin@boat', gateway: 'gateway.push.apple.com'
+  certificate: 'certificate.pem', passphrase: 'T1ypDfyp!', gateway: 'gateway.push.apple.com'
 )
 
 notification = Grocer::Notification.new(
-  device_token: "1bf5ba0760676d3e9b4780b3d07e0410dbdd8581c0dc4eb5eb1da5eaf763aa54", badge: 8
+  device_token: "7bc7bfad910f8dcc6b44265bf10aef4bf41a6ae2", badge: 8
 )
 
 puts notification.inspect

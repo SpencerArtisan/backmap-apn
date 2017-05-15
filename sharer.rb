@@ -3,7 +3,7 @@ require 'ostruct'
 require 'grocer'
 
 pusher = Grocer.pusher(
-  certificate: 'ckProd.pem', passphrase: '3menin@boat', gateway: 'gateway.push.apple.com'
+  certificate: 'certificate.pem', passphrase: 'T1ypDfyp!', gateway: 'gateway.push.apple.com'
 )
 
 def users
