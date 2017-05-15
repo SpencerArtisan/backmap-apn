@@ -5,7 +5,7 @@ pusher = Grocer.pusher(
 )
 
 notification = Grocer::Notification.new(
-  device_token: "7bc7bfad910f8dcc6b44265bf10aef4bf41a6ae2", badge: 8
+  device_token: "4bef0589e4a186a5d1ec8a135db472dd75550a285b44c0820a84eedaf3806294", badge: 8
 )
 
 puts notification.inspect

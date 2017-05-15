@@ -11,14 +11,14 @@ def users
   firebase = Firebase::Client.new(base_uri)
   response = firebase.get("users", {})
   response.body.map do |user| 
-    OpenStruct.new(name: user[0], shares: user[1]['given'] == nil ? 0 : user[1]['given'].size, iphone: user[1]['iphone']) if user[1]['iphone'] != nil
+    OpenStruct.new(name: user[0], shares: user[1]['given'] == nil ? 0 : user[1]['given'].size, device: user[1]['device']) if user[1]['device'] != nil
   end.compact
 end
 
 users.each do |user|
-  if user.iphone != "ff"
+  if user.device != "ff"
     puts user
-    notification = Grocer::Notification.new(device_token: user.iphone, badge: user.shares)
+    notification = Grocer::Notification.new(device_token: user.device, badge: user.shares)
     puts notification.inspect
     pusher.push notification
   end
