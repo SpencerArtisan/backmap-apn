@@ -4,8 +4,6 @@ require 'houston'
 
 certificate = File.read('production_Artisan.I-ll-Be-Back.pem')
 passphrase = 'T1ypDfyp!'
-connection = Houston::Connection.new(Houston::APPLE_DEVELOPMENT_GATEWAY_URI, certificate, passphrase)
-connection.open
 
 def users
   base_uri = 'https://illbeback.firebaseio.com/'
@@ -18,12 +16,14 @@ end
 
 users.each do |user|
   if user.device != "ff"
+connection = Houston::Connection.new(Houston::APPLE_DEVELOPMENT_GATEWAY_URI, certificate, passphrase)
+connection.open
     notification = Houston::Notification.new(device: user.device)
     notification.badge = user.shares
     puts notification.inspect
 
     connection.write(notification.message)
+connection.close
   end
 end
 
-connection.close
