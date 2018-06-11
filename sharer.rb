@@ -14,16 +14,17 @@ def users
   end.compact
 end
 
+APN = Houston::Client.development
+APN.certificate = certificate
+APN.passphrase = passphrase
+
 users.each do |user|
   if user.device != "ff"
-connection = Houston::Connection.new(Houston::APPLE_DEVELOPMENT_GATEWAY_URI, certificate, passphrase)
-connection.open
-    notification = Houston::Notification.new(device: user.device)
-    notification.badge = user.shares
-    puts notification.inspect
+	notification = Houston::Notification.new(device: user.device)
+        notification.badge = user.shares
+        puts notification.inspect
 
-    connection.write(notification.message)
-connection.close
+	APN.push(notification)
   end
 end
 
