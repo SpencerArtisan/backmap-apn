@@ -2,7 +2,7 @@ require 'firebase'
 require 'ostruct'
 require 'houston'
 
-certificate = File.read('production_Artisan.I-ll-Be-Back.pem')
+certificate = File.read('push.pem')
 passphrase = 'T1ypDfyp!'
 
 def users
