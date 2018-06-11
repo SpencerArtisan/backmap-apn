@@ -24,4 +24,8 @@ Share a flag with your user, then run
 
 This should put a '1' notificaiton on the Breadcrumbs app icon.
 
+# Deploying
+The app runs in heroku. Commit all code changes to git, then
+
+	git push heroku master
  
