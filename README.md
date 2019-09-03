@@ -27,5 +27,6 @@ This should put a '1' notificaiton on the Breadcrumbs app icon.
 # Deploying
 The app runs in heroku. Commit all code changes to git, then
 
+    git remote add heroku https://git.heroku.com/backmap-apn.git
 	git push heroku master
  
